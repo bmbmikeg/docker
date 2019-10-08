@@ -139,7 +139,8 @@ RUN set -ex; \
     \
     apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false $fetchDeps; \
     rm -rf /var/lib/apt/lists/*
-
+RUN sed 's/80/8080/g' /etc/apache2/ports.conf > /etc/apache2/ports.conf
+sed 's/80/8080/g' /etc/apache2/sites-available/000-default.conf > /etc/apache2/sites-available/000-default.conf
 COPY *.sh upgrade.exclude /
 COPY config/* /usr/src/nextcloud/config/
 
